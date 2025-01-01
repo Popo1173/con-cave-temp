@@ -1,0 +1,30 @@
+// breakpoint
+@mixin mobile {
+  @media screen and (max-width: 425px - 1px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (width >= 425px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (width >= 768px) {
+    @content;
+  }
+}
+
+@mixin desktop-l {
+  @media screen and (width >= 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop-xl {
+  @media screen and (width >= 1240px) {
+    @content;
+  }
+}

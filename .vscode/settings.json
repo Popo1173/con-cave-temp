@@ -1,0 +1,72 @@
+{
+  // 既存のリンターを解除
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+
+  // 自動フォーマットを起動
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+
+  // eslint/stylelintの対象ファイルを指定
+  "eslint.validate": ["js", "cjs", "ts", "vue"],
+  "stylelint.validate": ["css", "scss", "vue"],
+
+  // ディフォルトフォーマッタにprettierを指定
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 形式ごとのフォーマッタ指定を追加
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[tyepscript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // markdownは自動フォーマットしない
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+
+  // コードスペルチェック除外
+  "cSpell.userWords": [
+    // 基本除外項目
+    "nuxt",
+    "valiabes",
+    "typecheck",
+    "nuxi",
+    "nuxtjs",
+    "stylelint",
+    "sitmap"
+  ],
+
+  // .gitフォルダをvscode内で表示させる
+  "files.exclude": {
+    "**/.git": false
+  }
+
+  // phpも自動フォーマットしたい
+  // need: [Run on Save](https://marketplace.visualstudio.com/items?itemName=emeraldwalk.RunOnSave)
+  // "emeraldwalk.runonsave": {
+  //   "commands": [
+  //     {
+  //       "match": ".php$",
+  //       "cmd": "prettier ${file} --write"
+  //     }
+  //   ]
+  // },
+
+  // liveServerでgenerateファイルを確認したい
+  // need: [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+  // "liveServer.settings.root": "/dist"
+}

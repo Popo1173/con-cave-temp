@@ -1,0 +1,10 @@
+@use 'sass:math';
+
+// scssの共通function/mixinを記載
+
+// mixins -------------
+
+@import './mixins/wrapper';
+@import './mixins/breakpoint';
+@import './mixins/font';
+@import './mixins/functions';

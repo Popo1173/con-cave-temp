@@ -1,0 +1,222 @@
+// =============================================================================
+// mixin / function
+// =============================================================================
+//==============================================================================
+//	メディアクエリ
+//==============================================================================
+$mq-pc: 768;
+$mq-sp: 767.9;
+$mq-tab-min: 1365.9;
+$mmq-tab-max: 1366;
+$mq-max: 1280;
+
+// px
+$mq-pc-px: $mq-pc * 1px;
+$mq-sp-px: $mq-sp * 1px;
+$mq-tab-min-px: $mq-tab-min * 1px;
+$mmq-tab-max-px: $mmq-tab-max * 1px;
+$mq-max-px: $mq-max * 1px;
+
+@mixin mq-pc() {
+  @media screen and (min-width: $mq-pc-px) {
+    @content;
+  }
+}
+
+@mixin mq-pc2() {
+  @media screen and (width >= 1000px) {
+    @content;
+  }
+}
+
+@mixin mq-sp() {
+  @media screen and (max-width: $mq-sp-px) {
+    @content;
+  }
+}
+
+@mixin mq-sp2() {
+  @media screen and (width >= 410px) and (max-width: $mq-sp-px) {
+    @content;
+  }
+}
+
+@mixin mq-tab() {
+  @media screen and (min-width: $mq-pc-px) and (max-width: $mq-max-px) {
+    @content;
+  }
+}
+
+@mixin mq-font() {
+  @media screen and (min-width: $mq-pc-px) and (width <= 1080px) {
+    @content;
+  }
+}
+
+@mixin mq-max() {
+  @media screen and (min-width: $mq-max-px) {
+    @content;
+  }
+}
+
+@mixin for-print() {
+  @media print {
+    @content;
+  }
+}
+
+//==============================================================================
+//	比率を自動計算するfunction（SP版）
+//==============================================================================
+/**
+ * ベース幅（base-sp-width）で作成されたデザインに対して、
+ * デバイス幅を維持した width/height/margin/padding サイズを返す関数。
+ * 使い方
+ *	 - width sprem(560)		// photoshop上で 560px
+ *	 - height sprem(100)	 // photoshop上で 100px
+*/
+// psd（XD）の幅
+$base-sp-width: 375;
+
+// パッディングやマージンで使えるfunction
+@function sprem($photoshop_on_px) {
+  @return ((($photoshop_on_px) / ($base-sp-width)) * 100vw);
+}
+
+// フォントサイズを算出してくれるfunction
+@function spfsrem($photoshop_on_px) {
+  $vw-sp-ratio: (($base-sp-width) / 100);
+  @return ((($photoshop_on_px) / ($vw-sp-ratio)) * 1vw);
+}
+
+//==============================================================================
+//	比率を自動計算するfunction（タブレット版）
+//==============================================================================
+/**
+ * ベース幅（base-pc-width）で作成されたデザインに対して、
+ * デバイス幅を維持した width/height/margin/padding サイズを返す関数。
+ * 使い方
+ *	 - width pcrem(560)		// photoshop上で 560px
+ *	 - height pcrem(100)	 // photoshop上で 100px
+ */
+// psd（XD）の幅
+$base-pc-width: 1280;
+
+// フォント計算用変数
+// PCサイズ /100 - SPサイズ /100
+$font-sum-base: (math.div($mq-max, 100)) - (math.div($mq-pc, 100));
+
+//**
+
+$min-window-width: (math.div($mq-pc, 100));
+
+// パッディングやマージンで使えるfunction
+@function pcrem($photoshop_on_px) {
+  @return ((math.div($photoshop_on_px, $base-pc-width)) * 100vw);
+}
+
+// フォントサイズを算出してくれるfunction
+@function pcfsrem($photoshop_on_px) {
+  $vw-pc-ratio: (math.div($base-pc-width, 100));
+  @return ((math.div($photoshop_on_px, $vw-pc-ratio)) * 1vw);
+}
+
+// ↑のfunction利用してのclamp使用（SP版）
+@function sppx($size) {
+  @return clamp((math.div($size, 2)) * 1px, sprem($size), ($size) * 1px);
+}
+
+// ↑のfunction利用してのclamp使用（PC版）
+@function pcpx($size) {
+  @return clamp((math.div($size, 2)) * 1px, pcrem($size), ($size) * 1px);
+}
+
+// =============================================================================
+//	font-size
+// =============================================================================
+@mixin fs($fsize) {
+  font-size: ($fsize) px;
+  font-size: math.div($fsize, 16) rem;
+}
+
+// clamp使用版（SP）
+@mixin spfs($fsize) {
+  font-size: clamp(
+    ((math.div($fsize, 16)) * 0.7) * 1rem,
+    spfsrem($fsize),
+    (math.div($fsize, 16)) * 1rem
+  );
+}
+
+// clamp使用版（PC）
+@mixin pcfs($fsize) {
+  font-size: clamp(
+    ((math.div($fsize, 16)) * 0.65) * 1rem,
+    pcfsrem($fsize),
+    (math.div($fsize, 16)) * 1rem
+  );
+}
+
+// =============================================================================
+//	object-fit
+// =============================================================================
+@mixin imgfit() {
+  width: 100%;
+  height: 100%;
+  font-family: 'object-fit cover';
+  object-fit: cover;
+}
+
+// =============================================================================
+//	background Latina 対応
+// =============================================================================
+@mixin bgimg($name, $extension) {
+  background-image: url($imgpath + $name + '.' + $extension);
+  @include bg_latina {
+    background-image: url($imgpath + $name + '@2x.' + $extension);
+  }
+}
+
+// =============================================================================
+//	flexbox
+// =============================================================================
+@mixin dflex($flex-direction, $justify-content, $align-items) {
+  display: flex;
+  @if $flex-direction == 'column' {
+    flex-direction: column;
+  } @else if flex-direction == 'row' {
+    flex-direction: row;
+  } @else {
+    flex-direction: column;
+  }
+  @if $justify-content == 'center' {
+    justify-content: center;
+  } @else if $justify-content == 'between' {
+    justify-content: space-between;
+  } @else if $justify-content == start {
+    justify-content: flex-start;
+  } @else if $justify-content == end {
+    justify-content: flex-end;
+  } @else if $justify-content == 'around' {
+    justify-content: space-around;
+  }
+  @if $align-items == 'center' {
+    align-items: center;
+  } @else if $align-items == 'start' {
+    align-items: flex-start;
+  } @else if $align-items == 'end' {
+    align-items: flex-end;
+  } @else if $align-items == 'stretch' {
+    align-items: stretch;
+  }
+}
+
+// =============================================================================
+//	centering
+// =============================================================================
+@mixin centering() {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

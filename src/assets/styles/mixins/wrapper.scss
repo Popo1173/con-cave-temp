@@ -1,0 +1,21 @@
+// side margin（左右マージン）
+@mixin wrapper {
+  // mobile: 左右マージン24px/デザインカンプ375px
+  @include mobile {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  // table: 左右マージン48px/デザインカンプ768px
+  @include tablet {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  // desktop: 左右マージン94px/デザインカンプ1440px
+  @include desktop {
+    max-width: 1160px + (24px * 2);
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

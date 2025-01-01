@@ -1,0 +1,15 @@
+{
+  // 推奨機能拡張
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "editorconfig.editorconfig",
+    "vue.volar"
+    // "emeraldwalk.runonsave",
+    // "ritwickdey.liveserver",
+  ],
+
+  // 非推奨の機能拡張
+  "unwantedRecommendations": ["octref.vetur"]
+}

@@ -1,0 +1,112 @@
+:root {
+  // プライマリーカラー
+  --primary: #ea2422;
+
+  // サブプライマリーカラー
+  --sub-primary: #63a2d8;
+
+  // 本文のテキストカラー
+  --text-base-color: #333;
+
+  // tableの外枠
+  --table-color: #ccc;
+
+  //==============================================================================
+  // _b1_variables.styl
+  // 各種変数設定
+  // ・基礎設定（フォントファミリー、フォントサイズ、ベース幅、画像パス）
+  // ・各種色設定
+  //==============================================================================
+
+  //==============================================================================
+  // 基礎設定
+  //==============================================================================
+  // ベースフォント
+  $font-family: 'Noto Sans JP', 'Helvetica', 'Arial', 'Doroid Sans', 'メイリオ',
+    'Meiryo', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'sans-serif';
+
+  // 明朝系
+  $font-mincho: '游明朝', 'Yu Mincho', 'YuMincho';
+
+  // Webフォント
+  $font-web: 'Noto Serif JP', serif;
+
+  // ベースフォントサイズ
+  $font-size: 62.5%;
+
+  // ベースコンテンツ幅
+  $base-width: 1280px;
+
+  // 画像パス
+  $imgpath: '/assets/img/';
+
+  //==============================================================================
+  //	色設定
+  //==============================================================================
+
+  $color-black: #333;
+
+  /* 灰色各種 */
+  $color-gray1: #ccc;
+
+  /* 灰色各種 */
+  $color-gray2: #eee;
+
+  /* 灰色各種 */
+  $color-gray3: #f0f0f0;
+
+  /* 赤 */
+  $color-red: #f00;
+
+  // ベースフォントカラー
+  $color-font: $color-black;
+
+  // ベースカラー
+  $color-primary: #6cc;
+
+  // サブカラー
+  $color-secondary: #fa0;
+
+  // デフォルトカラー
+  $color-default: #999;
+
+  // インフォカラー
+  $color-info: #21cfef;
+
+  // 注意色
+  $color-alert: #f4bd00;
+
+  // 警告色
+  $color-error: #fa0000;
+
+  // 強調色
+  $color-emphasis: $color-red;
+
+  /* Disabled */
+  $color-disabled: $color-gray2;
+
+  /* 背景色 primary */
+  $bgcolor-primary: #fff0f0;
+
+  /* 背景色 secondary */
+  $bgcolor-secondary: #fff0ff;
+
+  /* 背景色 disabled */
+  $bgcolor-disabled: $color-gray1;
+
+  //==============================================================================
+  // Media Queriesで使う横幅の変数
+  //==============================================================================
+  $mq-pc: 768;
+  $mq-sp: 767.9;
+  $mq-tab-min: 1365.9;
+  $mmq-tab-max: 1366;
+  $mq-max: 1280;
+
+  // px
+  $mq-pc-px: $mq-pc * 1px;
+  $mq-sp-px: $mq-sp * 1px;
+  $mq-tab-min-px: $mq-tab-min * 1px;
+  $mmq-tab-max-px: $mmq-tab-max * 1px;
+  $mq-max-px: $mq-max * 1px;
+}

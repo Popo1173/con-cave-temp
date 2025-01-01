@@ -1,0 +1,16 @@
+/**
+ * セッティング用CSS
+ * 全てのエントリポイントへimportしてください。
+ */
+
+// css reset
+// sanitize.cssをベースに一部リセットCSSを追加
+@import './settings/reset';
+
+// css variables
+// :rootへ各種カラーを指定valiabes
+@import './settings/valiabes';
+
+// css font
+// フォントのimport、及び、ベースのフォントサイズを指定
+@import './settings/font';
