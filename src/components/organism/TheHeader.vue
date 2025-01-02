@@ -1,22 +1,30 @@
 <template>
   <div>
-    <p class="test">ヘッダー</p>
+    <nav class="header">
+      <figure class="header__logo">
+        <img
+          class="header__logo-image"
+          src="/img/common/logo.svg"
+          alt="con-cave"
+        />
+      </figure>
+    </nav>
   </div>
 </template>
 
 <script setup lang="ts"></script>
 <style lang="scss" scoped>
-.test {
-  font-size: 20px;
-  color: var(color-black);
+.header {
+  // .header__logo
 
-  // @include desktop {
-  //   @include wrapper;
-  //   font-size: 90px;
-  // }
+  &__logo {
+  }
 
-  @include mq-pc {
-    font-size: 220px;
+  // .header__logo-image
+
+  &__logo-image {
+    max-width: 100%;
+    max-width: 224px;
   }
 }
 </style>

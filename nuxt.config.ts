@@ -80,7 +80,7 @@ export default defineNuxtConfig({
   site: {
     defaultLocale: 'ja',
     url: 'http://localhost:3000',
-    name: 'エスティ保険サービス株式会社',
+    name: 'con-cave',
     // description: '共通のディスクリプション',
     // URL末尾にスラッシュを付与する
     trailingSlash: true,
